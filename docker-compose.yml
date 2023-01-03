@@ -1,0 +1,18 @@
+version: '2'
+
+services:
+  myapp:
+    image: bitnami/codeigniter:3-almondware-t9
+    build:
+      dockerfile: docker/Dockerfile
+      context: .
+    ports:
+      - '9000:8000'
+    environment:
+      - CI_ENV=development
+      - CODEIGNITER_DATABASE_HOST=host
+      - CODEIGNITER_DATABASE_USER=username
+      - CODEIGNITER_DATABASE_PASSWORD=password
+      - CODEIGNITER_DATABASE_NAME=dbname
+    volumes:
+      - './my-project/myapp:/app'
